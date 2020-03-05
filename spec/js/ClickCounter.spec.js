@@ -71,5 +71,33 @@ describe("Click Counter Calamity", function () {
                 })
             })
         })
+
+        describe("Culminating Compounding", () => {
+            it('should return 0 for when there is no compounder', () => {
+                expect(sut.getCompounderNumber()).toBe(0);
+            })
+            it('should add 1 to compounderNumber when compounder is bought', () => {
+                sut.addCompounder();
+                expect(sut.getCompounderNumber()).toBe(1);
+            })
+            it('should reduce clickRecord by 10 when first compounder is bought', () => {
+                sut.clickRecord = 30;
+                sut.buyCompounder();
+                expect(sut.getClickRecord()).toBe(20);
+            })
+            it('should increase the compounderCost by 10% after buying a compounder', function () {
+                sut.clickRecord = 100;
+                sut.buyCompounder();
+                expect(sut.compounderCost).toBe(11);
+            })
+            it('should not allow user to buy compounder without sufficient clicks', function () {
+                sut.clickRecord = 9;
+                sut.buyCompounder();
+                expect(sut.compounderNumber).toBe(0);
+            })
+            
+
+
+        })
     })
 })
