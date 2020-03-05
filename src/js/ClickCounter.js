@@ -9,7 +9,7 @@ class ClickerGame {
     clickRecord = 0;
 
     handleClick = function () {
-        this.clickRecord++;
+        this.clickRecord += 1;
     }
     getClickRecord = function () {
         return this.clickRecord;
@@ -24,7 +24,7 @@ class ClickerGame {
     getCompanionNumber = function () {
         return this.companionNumber;
     }
-    companionCostIncrease = function() {
+    companionCostIncrease = function () {
         this.companionCost = this.companionCost + (this.companionCost * .1);
     }
 
@@ -36,11 +36,12 @@ class ClickerGame {
         }
     }
 
-    /* addCompanionNumToClickRecord = function() {
+    addCompanionNumToClickRecord = function () {
         this.clickRecord = this.companionNumber + this.clickRecord;
     }
 
-    autoClicker = function(){
-        setInterval(this.addCompanionNumToClickRecord, 1000);
-    } */
+
 }
+
+let mainCookieObject = new ClickerGame();
+setInterval(mainCookieObject.addCompanionNumToClickRecord(), 1000);
