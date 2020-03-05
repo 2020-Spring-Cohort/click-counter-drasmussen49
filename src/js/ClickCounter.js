@@ -27,5 +27,6 @@ class ClickerGame{
     buyCompanion = function(){
         this.addCompanion();
         this.clickRecord = this.clickRecord - this.companionCost;
+        this.companionCost = this.companionCost + (this.companionCost * .1);
     }
 }

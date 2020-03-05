@@ -43,15 +43,18 @@ describe("Click Counter Calamity", function () {
                 })
                 it('should subtract clickRecord count when companion is bought', function () {
                     sut.clickRecord = 100;
-                    console.log(sut.getClickRecord());
                     sut.buyCompanion();
-                    console.log(sut.getClickRecord());
                     expect(sut.getClickRecord()).toBe(0);
                 })
                 it('should add 1 to my companionNumber when I buy a companion', function() {
                     sut.companionNumber = 0;
                     sut.buyCompanion();
                     expect(sut.getCompanionNumber()).toBe(1);
+                })
+                it('should increase the companionCost by 10% after buying a companion', function(){
+                    sut.buyCompanion();
+                    expect(sut.companionCost).toBe(110);
+                    console.log(sut.companionCost);
                 })
             })
 
