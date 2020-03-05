@@ -1,32 +1,35 @@
-class ClickerGame{
-    
+class ClickerGame {
+
     constructor() {
         this.clickRecord = 0;
         this.companionNumber = 0;
         this.companionCost = 100;
     }
-    
+
     clickRecord = 0;
-    
-    handleClick = function(){
-        this.clickRecord ++;
+
+    handleClick = function () {
+        this.clickRecord++;
     }
-    getClickRecord = function(){
+    getClickRecord = function () {
         return this.clickRecord;
     }
 
     companionNumber = 0;
     companionCost;
 
-    addCompanion = function(){
-        this.companionNumber ++;
+    addCompanion = function () {
+        this.companionNumber++;
     }
-    getCompanionNumber = function(){
+    getCompanionNumber = function () {
         return this.companionNumber;
     }
-    buyCompanion = function(){
-        this.addCompanion();
-        this.clickRecord = this.clickRecord - this.companionCost;
-        this.companionCost = this.companionCost + (this.companionCost * .1);
+
+    buyCompanion = function () {
+        if (this.clickRecord >= this.companionCost) {
+            this.addCompanion();
+            this.clickRecord = this.clickRecord - this.companionCost;
+            this.companionCost = this.companionCost + (this.companionCost * .1);
+        }
     }
 }
