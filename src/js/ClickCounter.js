@@ -24,12 +24,23 @@ class ClickerGame {
     getCompanionNumber = function () {
         return this.companionNumber;
     }
+    companionCostIncrease = function() {
+        this.companionCost = this.companionCost + (this.companionCost * .1);
+    }
 
     buyCompanion = function () {
         if (this.clickRecord >= this.companionCost) {
             this.addCompanion();
             this.clickRecord = this.clickRecord - this.companionCost;
-            this.companionCost = this.companionCost + (this.companionCost * .1);
+            this.companionCostIncrease();
         }
     }
+
+    /* addCompanionNumToClickRecord = function() {
+        this.clickRecord = this.companionNumber + this.clickRecord;
+    }
+
+    autoClicker = function(){
+        setInterval(this.addCompanionNumToClickRecord, 1000);
+    } */
 }

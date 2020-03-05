@@ -57,7 +57,6 @@ describe("Click Counter Calamity", function () {
                     sut.clickRecord = 100;
                     sut.buyCompanion();
                     expect(sut.companionCost).toBe(110);
-                    console.log(sut.companionCost);
                 })
                 it('should not allow user to buy companion without sufficient clicks', function () {
                     sut.clickRecord = 90;
@@ -65,8 +64,6 @@ describe("Click Counter Calamity", function () {
                     expect(sut.companionNumber).toBe(0);
                 })
             })
-
         })
-
     })
 })
