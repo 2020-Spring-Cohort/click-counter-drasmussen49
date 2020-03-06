@@ -75,5 +75,9 @@ class ClickerGame {
 
 }
 
-let mainCookieObject = new ClickerGame();
-setInterval(mainCookieObject.addCompanionNumToClickRecord(), 1000);
+let cookieObject = new ClickerGame();
+//setInterval(mainCookieObject.addCompanionNumToClickRecord(), 1000);
+
+const updateClickRecorder = (clickRecorderElement, cookieObject) => {
+    clickRecorderElement.innerText = cookieObject.getClickRecord();
+}

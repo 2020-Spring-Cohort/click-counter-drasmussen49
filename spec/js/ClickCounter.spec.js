@@ -4,10 +4,22 @@ describe("Click Counter Calamity", function () {
 
 
         let sut;
+        let testClickRecorder;
+        let testClickHandler;
+        let testCompanionBuyer;
+        let testCompanionCount;
+        let testCompounderBuyer;
+        let testCompounderCount;
 
         beforeEach(function () {
             sut = new ClickerGame();
             sut.clickRecord = 0;
+            testClickHandler = document.createElement('button');
+            testClickRecorder = document.createElement('div');
+            testCompanionBuyer = document.createElement('button');
+            testCompanionCount = document.createElement('div');
+            testCompounderBuyer = document.createElement('button');
+            testCompounderCount = document.createElement('div');
         })
 
         describe("handleClick", () => {
@@ -23,7 +35,6 @@ describe("Click Counter Calamity", function () {
                 expect(sut.getClickRecord()).toBe(1);
             })
         })
-
 
         describe("Companion Clicker", function () {
 
@@ -63,7 +74,7 @@ describe("Click Counter Calamity", function () {
                     sut.buyCompanion();
                     expect(sut.companionNumber).toBe(0);
                 })
-                it('should add companion count to clickRecord when related function called', () =>{
+                it('should add companion count to clickRecord when related function called', () => {
                     sut.clickRecord = 100;
                     sut.buyCompanion();
                     sut.addCompanionNumToClickRecord();
@@ -101,7 +112,25 @@ describe("Click Counter Calamity", function () {
                 sut.handleClick();
                 expect(sut.getClickRecord()).toBe(1.2);
             })
+        })
+
+        describe("DOM Methods", () => {
             
+            describe("Main Click functions", () => {
+                it('should show 0 in clickRecording element before any clicks are performed', () => {
+                    updateClickRecorder(testClickRecorder, sut);
+                    expect(testClickRecorder.innerText).toBe('0');
+                })
+                it('should update the clickRecording element after handleClick button is pushed', () => {
+                    sut.handleClick();
+                    updateClickRecorder(testClickRecorder, sut);
+                    expect(testClickRecorder.innerText).toBe('1');
+                })
+
+
+
+
+            })
 
 
         })
