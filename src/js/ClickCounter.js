@@ -6,12 +6,14 @@ class ClickerGame {
         this.companionCost = 100;
         this.compounderNumber = 0;
         this.compounderCost = 10;
+        this.clickWeight = 1;
     }
 
     clickRecord = 0;
+    clickWeight;
 
     handleClick = function () {
-        this.clickRecord += 1;
+        this.clickRecord += this.clickWeight;
     }
     getClickRecord = function () {
         return this.clickRecord;
@@ -30,7 +32,7 @@ class ClickerGame {
         this.companionCost = this.companionCost + (this.companionCost * .1);
     }
 
-    buyCompanion = function () {
+    buyCompanion = () => {
         if (this.clickRecord >= this.companionCost) {
             this.addCompanion();
             this.clickRecord = this.clickRecord - this.companionCost;
@@ -38,7 +40,7 @@ class ClickerGame {
         }
     }
 
-    addCompanionNumToClickRecord = function () {
+    addCompanionNumToClickRecord = () => {
         this.clickRecord = this.companionNumber + this.clickRecord;
     }
 
@@ -57,11 +59,16 @@ class ClickerGame {
         this.compounderCost = this.compounderCost + (this.compounderCost * .1);
     }
 
+    compounderWeightIncrease = () => {
+        this.clickWeight = this.clickWeight + (this.clickWeight *.2);
+    }
+
     buyCompounder = () => {
         if(this.clickRecord >= this.compounderCost){
             this.addCompounder();
             this.clickRecord = this.clickRecord - this.compounderCost;
             this.compounderCostIncrease();
+            this.compounderWeightIncrease();
         }
     }
 
