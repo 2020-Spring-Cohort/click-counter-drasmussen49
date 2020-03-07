@@ -4,8 +4,8 @@ describe("Click Counter Calamity", function () {
 
 
         let sut;
-        let testClickRecorder;
         let testClickHandler;
+        let testClickRecorder;
         let testCompanionBuyer;
         let testCompanionCount;
         let testCompounderBuyer;
@@ -20,6 +20,8 @@ describe("Click Counter Calamity", function () {
             testCompanionCount = document.createElement('div');
             testCompounderBuyer = document.createElement('button');
             testCompounderCount = document.createElement('div');
+            makeClickHandlerButton(testClickHandler, testClickRecorder, sut);
+
         })
 
         describe("handleClick", () => {
@@ -126,10 +128,16 @@ describe("Click Counter Calamity", function () {
                     updateClickRecorder(testClickRecorder, sut);
                     expect(testClickRecorder.innerText).toBe('1');
                 })
-
-
-
-
+            })
+            describe("makeHandleClicker() creates a button out of passed button, calls handleClick() when clicked", () =>{
+                it('should make getClickRecord() return 1 after handleClick() button is pushed', () => {
+                    testClickHandler.click();
+                    expect(sut.getClickRecord()).toBe(1);
+                })
+                it('should show 1 in clickRecordElement after handleClick() button is pushed', () =>{
+                    testClickHandler.click();
+                    expect(testClickRecorder.innerText).toBe('1');
+                })
             })
 
 

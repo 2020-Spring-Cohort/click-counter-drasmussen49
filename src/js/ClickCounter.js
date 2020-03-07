@@ -78,6 +78,55 @@ class ClickerGame {
 let cookieObject = new ClickerGame();
 //setInterval(mainCookieObject.addCompanionNumToClickRecord(), 1000);
 
-const updateClickRecorder = (clickRecorderElement, cookieObject) => {
-    clickRecorderElement.innerText = cookieObject.getClickRecord();
+const updateClickRecorder = (clickRecorderElementId, mainObject) => {
+    clickRecorderElementId.innerText = mainObject.getClickRecord();
 }
+
+const updateCompanionCount = (companionCountElementId, mainObject) => {
+    companionCountElementId.innerText = mainObject.getCompanionNumber();
+}
+
+const updateCompounderCount = (compounderCountElementId, mainObject) => {
+    compounderCountElementId.innerText = mainObject.getCompounderNumber();
+}
+
+const makeClickHandlerButton = (mainClickButtonId, clickRecordElementId, mainObject) => {
+    mainClickButtonId.addEventListener('click', ()=>{
+        mainObject.handleClick();
+        updateClickRecorder(clickRecordElementId, mainObject);
+    })
+}
+
+const makeCompanionBuyButton = (companionBuyId, companionCountElementId, mainObject) => {
+    companionBuyId.addEventListener('click', ()=>{
+        mainObject.buyCompanion();
+        updateCompanionCount(companionCountElementId, mainObject);
+    })
+}
+
+const makeCompounderBuyButton = (compounderBuyId, compounderCountElementId, mainObject) => {
+    compounderBuyId.addEventListener('click', ()=>{
+        mainObject.buyCompounder();
+        updateCompounderCount(compounderCountElementId, mainObject);
+    })
+}
+
+
+const mainClickButtonElement = document.querySelector("#main-clicker");
+const clickRecordElement = document.querySelector("#click-record");
+
+const companionBuyId = document.querySelector("#companion-clicker");
+const companionCountId = document.querySelector("#companion-count");
+
+const compounderBuyId = document.querySelector("#compounder-clicker");
+const compounderCountId = document.querySelector("#compounder-count");
+
+updateClickRecorder(clickRecordElement, cookieObject);
+makeClickHandlerButton(mainClickButtonElement, clickRecordElement, cookieObject);
+
+updateCompanionCount(companionCountId, cookieObject);
+makeCompanionBuyButton(companionBuyId, companionCountId, cookieObject);
+
+updateCompounderCount(compounderCountId, cookieObject);
+makeCompounderBuyButton(compounderBuyId, compounderCountId, cookieObject);
+
