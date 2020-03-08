@@ -7,6 +7,8 @@ const companionCountId = document.querySelector("#companion-count");
 const compounderBuyId = document.querySelector("#compounder-clicker");
 const compounderCountId = document.querySelector("#compounder-count");
 
+const clickWeightElementId = document.querySelector("#click-weight");
+
 
 class ClickerGame {
 
@@ -27,6 +29,9 @@ class ClickerGame {
     }
     getClickRecord = function () {
         return this.clickRecord;
+    }
+    getClickWeight = function() {
+        return this.clickWeight;
     }
 
     companionNumber = 0;
@@ -53,6 +58,7 @@ class ClickerGame {
     addCompanionNumToClickRecord = () => {
         this.clickRecord = this.companionNumber + this.clickRecord;
         updateClickRecorder(clickRecordElement, cookieObject);
+        updateClickWeight(clickWeightElementId, cookieObject);
     }
 
     compounderNumber;
@@ -107,6 +113,10 @@ const updateCompounderCount = (compounderCountElementId, mainObject) => {
     compounderCountElementId.innerText = mainObject.getCompounderNumber();
 }
 
+const updateClickWeight = (clickWeightElementId, mainObject) => {
+    clickWeightElementId.innerText = mainObject.getClickWeight();
+}
+
 const makeClickHandlerButton = (mainClickButtonId, clickRecordElementId, mainObject) => {
     mainClickButtonId.addEventListener('click', () => {
         mainObject.handleClick();
@@ -138,3 +148,4 @@ makeCompanionBuyButton(companionBuyId, companionCountId, cookieObject);
 updateCompounderCount(compounderCountId, cookieObject);
 makeCompounderBuyButton(compounderBuyId, compounderCountId, cookieObject);
 
+updateClickWeight(clickWeightElementId, cookieObject);
