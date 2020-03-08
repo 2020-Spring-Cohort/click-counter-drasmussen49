@@ -42,6 +42,7 @@ class ClickerGame {
 
     addCompanionNumToClickRecord = () => {
         this.clickRecord = this.companionNumber + this.clickRecord;
+        updateClickRecorder(clickRecordElement, cookieObject);
     }
 
     compounderNumber;
@@ -60,11 +61,11 @@ class ClickerGame {
     }
 
     compounderWeightIncrease = () => {
-        this.clickWeight = this.clickWeight + (this.clickWeight *.2);
+        this.clickWeight = this.clickWeight + (this.clickWeight * .2);
     }
 
     buyCompounder = () => {
-        if(this.clickRecord >= this.compounderCost){
+        if (this.clickRecord >= this.compounderCost) {
             this.addCompounder();
             this.clickRecord = this.clickRecord - this.compounderCost;
             this.compounderCostIncrease();
@@ -76,7 +77,9 @@ class ClickerGame {
 }
 
 let cookieObject = new ClickerGame();
-//setInterval(mainCookieObject.addCompanionNumToClickRecord(), 1000);
+const autoClick = () => {
+    setInterval(() => {cookieObject.addCompanionNumToClickRecord()}, 1000)
+};
 
 const updateClickRecorder = (clickRecorderElementId, mainObject) => {
     clickRecorderElementId.innerText = mainObject.getClickRecord();
@@ -91,21 +94,21 @@ const updateCompounderCount = (compounderCountElementId, mainObject) => {
 }
 
 const makeClickHandlerButton = (mainClickButtonId, clickRecordElementId, mainObject) => {
-    mainClickButtonId.addEventListener('click', ()=>{
+    mainClickButtonId.addEventListener('click', () => {
         mainObject.handleClick();
         updateClickRecorder(clickRecordElementId, mainObject);
     })
 }
 
 const makeCompanionBuyButton = (companionBuyId, companionCountElementId, mainObject) => {
-    companionBuyId.addEventListener('click', ()=>{
+    companionBuyId.addEventListener('click', () => {
         mainObject.buyCompanion();
         updateCompanionCount(companionCountElementId, mainObject);
     })
 }
 
 const makeCompounderBuyButton = (compounderBuyId, compounderCountElementId, mainObject) => {
-    compounderBuyId.addEventListener('click', ()=>{
+    compounderBuyId.addEventListener('click', () => {
         mainObject.buyCompounder();
         updateCompounderCount(compounderCountElementId, mainObject);
     })

@@ -76,12 +76,6 @@ describe("Click Counter Calamity", function () {
                     sut.buyCompanion();
                     expect(sut.companionNumber).toBe(0);
                 })
-                it('should add companion count to clickRecord when related function called', () => {
-                    sut.clickRecord = 100;
-                    sut.buyCompanion();
-                    sut.addCompanionNumToClickRecord();
-                    expect(sut.getClickRecord()).toBe(1);
-                })
             })
         })
 
@@ -139,8 +133,6 @@ describe("Click Counter Calamity", function () {
                     expect(testClickRecorder.innerText).toBe('1');
                 })
             })
-
-
         })
     })
 })
