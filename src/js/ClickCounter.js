@@ -1,3 +1,13 @@
+const mainClickButtonElement = document.querySelector("#main-clicker");
+const clickRecordElement = document.querySelector("#click-record");
+
+const companionBuyId = document.querySelector("#companion-clicker");
+const companionCountId = document.querySelector("#companion-count");
+
+const compounderBuyId = document.querySelector("#compounder-clicker");
+const compounderCountId = document.querySelector("#compounder-count");
+
+
 class ClickerGame {
 
     constructor() {
@@ -81,6 +91,10 @@ const autoClick = () => {
     setInterval(() => {cookieObject.addCompanionNumToClickRecord()}, 1000)
 };
 
+const infoAlertBox = () => {
+    alert("Hello! We here at Coo Coo Computing Challengers are happy to bring such products as Cookie Clicker Calamity to our users! We love programming and using it to bring games and products to life!")
+}
+
 const updateClickRecorder = (clickRecorderElementId, mainObject) => {
     clickRecorderElementId.innerText = mainObject.getClickRecord();
 }
@@ -114,15 +128,6 @@ const makeCompounderBuyButton = (compounderBuyId, compounderCountElementId, main
     })
 }
 
-
-const mainClickButtonElement = document.querySelector("#main-clicker");
-const clickRecordElement = document.querySelector("#click-record");
-
-const companionBuyId = document.querySelector("#companion-clicker");
-const companionCountId = document.querySelector("#companion-count");
-
-const compounderBuyId = document.querySelector("#compounder-clicker");
-const compounderCountId = document.querySelector("#compounder-count");
 
 updateClickRecorder(clickRecordElement, cookieObject);
 makeClickHandlerButton(mainClickButtonElement, clickRecordElement, cookieObject);
