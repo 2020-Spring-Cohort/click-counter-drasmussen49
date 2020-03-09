@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 4 Project</title>
+    <title>Cookie Clicker Calamity</title>
+    <link rel="stylesheet" href="/src/css/style.css">
 </head>
-<body>
-    <div class="container">
-        <div class="anchor"></div>
-    </div>
-    <script src="/src/app.js"></script>
+
+<body onload="autoClick()">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://drasmussen49.github.io/" target="_blank">About Me</a></li>
+                <li><a href="" onclick="infoAlertBox()">Company Info</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="clicker-section">
+            <button id="main-clicker">Click here!</button>
+            <div># of Cookies</div>
+            <div id="click-record"></div>
+            <br>
+            <div>Click Weight</div>
+            <div id="click-weight"></div>
+
+        </section>
+        <section>
+            <button id="companion-clicker">Buy companion</button>
+            <div># of Companions</div>
+            <div id="companion-count"></div>
+            <br>
+            <div>Companion Cost</div>
+            <div id="companion-cost"></div>
+
+        </section>
+        <section>
+            <button id="compounder-clicker">Buy compounder</button>
+            <div># of Compounders</div>
+            <div id="compounder-count"></div>
+            <br>
+            <div>Compounder Cost</div>
+            <div id="compounder-cost"></div>
+
+        </section>
+        <br>
+        <div><button onClick="window.location.reload();">Restart Game!!</button></div>
+
+        
+
+    </main>
+    <script src="/src/js/ClickCounter.js"></script>
 </body>
+
 </html>
