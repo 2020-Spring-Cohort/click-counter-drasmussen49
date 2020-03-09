@@ -1,5 +1,5 @@
 body{
-  background-color: #F0F8FF;
+  background: url(/src/images/cookies.jpg);
 }
 
 ul {
@@ -33,9 +33,7 @@ main {
   max-width: 500px;
   grid-template-columns: 1fr;
   text-align: center;
-  margin: auto;
   margin-top: 3em;
-  border: 5px solid black;
   padding: 1em;
 }
 
@@ -43,9 +41,10 @@ section {
   padding: 1em;
   margin-top: 10px;
   border: 2px solid black;
+  background-color: blanchedalmond;
 }
 button {
-  background-color:#228B22;
+  background-color: lightgrey;
   border: none;
   color: white;
   padding: 15px 32px;
