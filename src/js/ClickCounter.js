@@ -8,7 +8,8 @@ const compounderBuyId = document.querySelector("#compounder-clicker");
 const compounderCountId = document.querySelector("#compounder-count");
 
 const clickWeightElementId = document.querySelector("#click-weight");
-
+const companionCostElementId = document.querySelector("#companion-cost");
+const compounderCostElementId = document.querySelector("#compounder-cost");
 
 class ClickerGame {
 
@@ -24,26 +25,29 @@ class ClickerGame {
     clickRecord = 0;
     clickWeight;
 
-    handleClick = function () {
+    handleClick = () => {
         this.clickRecord += this.clickWeight;
     }
-    getClickRecord = function () {
+    getClickRecord = () => {
         return this.clickRecord;
     }
-    getClickWeight = function() {
+    getClickWeight = () => {
         return this.clickWeight;
     }
 
     companionNumber = 0;
     companionCost;
 
-    addCompanion = function () {
+    addCompanion = () => {
         this.companionNumber++;
     }
-    getCompanionNumber = function () {
+    getCompanionNumber = () => {
         return this.companionNumber;
     }
-    companionCostIncrease = function () {
+    getCompanionCost = () => {
+        return this.companionCost;
+    }
+    companionCostIncrease = () => {
         this.companionCost = this.companionCost + (this.companionCost * .1);
     }
 
@@ -59,6 +63,8 @@ class ClickerGame {
         this.clickRecord = this.companionNumber + this.clickRecord;
         updateClickRecorder(clickRecordElement, cookieObject);
         updateClickWeight(clickWeightElementId, cookieObject);
+        updateCompanionCost(companionCostElementId, cookieObject);
+        updateCompounderCost(compounderCostElementId, cookieObject);
     }
 
     compounderNumber;
@@ -66,6 +72,10 @@ class ClickerGame {
 
     getCompounderNumber = () => {
         return this.compounderNumber;
+    }
+
+    getCompounderCost = () => {
+        return this.compounderCost;
     }
 
     addCompounder = () => {
@@ -109,8 +119,16 @@ const updateCompanionCount = (companionCountElementId, mainObject) => {
     companionCountElementId.innerText = mainObject.getCompanionNumber();
 }
 
+const updateCompanionCost = (companionCostElementId, mainObject) => {
+    companionCostElementId.innerText = mainObject.getCompanionCost();
+}
+
 const updateCompounderCount = (compounderCountElementId, mainObject) => {
     compounderCountElementId.innerText = mainObject.getCompounderNumber();
+}
+
+const updateCompounderCost = (compounderCostElementId, mainObject) => {
+    compounderCostElementId.innerText = mainObject.getCompounderCost();
 }
 
 const updateClickWeight = (clickWeightElementId, mainObject) => {
@@ -149,3 +167,5 @@ updateCompounderCount(compounderCountId, cookieObject);
 makeCompounderBuyButton(compounderBuyId, compounderCountId, cookieObject);
 
 updateClickWeight(clickWeightElementId, cookieObject);
+updateCompanionCost(companionCostElementId, cookieObject);
+updateCompounderCost(compounderCostElementId, cookieObject);
